@@ -16,9 +16,6 @@ const LineChart = () => {
   for (let x of dataset[231].data) {
     fully_vaccinated.push(x.people_fully_vaccinated)
   }
-
-  console.log(dataset[231].data[0].date)
-
   return (
     <CChartLine
       style={{ height: '300px', marginTop: '40px' }}
