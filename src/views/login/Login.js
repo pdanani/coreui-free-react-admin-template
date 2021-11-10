@@ -16,7 +16,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
-
 const Login = () => {
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
@@ -27,7 +26,6 @@ const Login = () => {
   const onPassChange = (event) => {
     setPassword(event.target.value.trim())
   }
-
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -69,6 +67,11 @@ const Login = () => {
                           component={NavLink}
                           activeClassName="active"
                           disabled={!(username === 'demo' && password === 'demo')}
+                          onClick={
+                            username === 'demo' && password === 'demo'
+                              ? localStorage.setItem('token', 1)
+                              : localStorage.setItem('token', 0)
+                          }
                         >
                           <CButton color="primary" className="px-4">
                             Login
