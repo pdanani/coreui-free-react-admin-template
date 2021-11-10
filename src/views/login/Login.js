@@ -25,7 +25,7 @@ const Login = () => {
     setUsername(event.target.value)
   }
   const onPassChange = (event) => {
-    setPassword(event.target.value)
+    setPassword(event.target.value.trim())
   }
 
   return (

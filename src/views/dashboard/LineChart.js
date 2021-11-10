@@ -10,6 +10,7 @@ const LineChart = () => {
   let dates = []
   let fully_vaccinated = []
   for (let x of dataset[231].data) {
+    //This is where WORLDWIDE Data lies. We populate an array for dates and one for fully vaccinated people (x and y axes)
     console.log(x.date)
     dates.push(x.date)
   }
@@ -18,12 +19,12 @@ const LineChart = () => {
   }
   return (
     <CChartLine
-      style={{ height: '300px', marginTop: '40px' }}
+      style={{ height: '400px', marginTop: '40px' }}
       data={{
         labels: dates,
         datasets: [
           {
-            label: 'My First dataset',
+            label: '# of Fully Vaccinated People',
             backgroundColor: hexToRgba(getStyle('--cui-info'), 10),
             borderColor: getStyle('--cui-info'),
             pointHoverBackgroundColor: getStyle('--cui-info'),
