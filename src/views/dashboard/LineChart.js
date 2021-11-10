@@ -1,16 +1,29 @@
 import React from 'react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
-
+import dataset from './data.json'
 const LineChart = () => {
   const random = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+  console.log(dataset[231])
+  let dates = []
+  let fully_vaccinated = []
+  for (let x of dataset[231].data) {
+    console.log(x.date)
+    dates.push(x.date)
+  }
+  for (let x of dataset[231].data) {
+    fully_vaccinated.push(x.people_fully_vaccinated)
+  }
+
+  console.log(dataset[231].data[0].date)
+
   return (
     <CChartLine
       style={{ height: '300px', marginTop: '40px' }}
       data={{
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: dates,
         datasets: [
           {
             label: 'My First dataset',
@@ -18,45 +31,13 @@ const LineChart = () => {
             borderColor: getStyle('--cui-info'),
             pointHoverBackgroundColor: getStyle('--cui-info'),
             borderWidth: 2,
-            data: [
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-            ],
+            data: fully_vaccinated,
             fill: true,
-          },
-          {
-            label: 'My Second dataset',
-            backgroundColor: 'transparent',
-            borderColor: getStyle('--cui-success'),
-            pointHoverBackgroundColor: getStyle('--cui-success'),
-            borderWidth: 2,
-            data: [
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-              random(50, 200),
-            ],
-          },
-          {
-            label: 'My Third dataset',
-            backgroundColor: 'transparent',
-            borderColor: getStyle('--cui-danger'),
-            pointHoverBackgroundColor: getStyle('--cui-danger'),
-            borderWidth: 1,
-            borderDash: [8, 5],
-            data: [65, 65, 65, 65, 65, 65, 65],
           },
         ],
       }}
       options={{
+        //styling of the chart
         maintainAspectRatio: false,
         plugins: {
           legend: {

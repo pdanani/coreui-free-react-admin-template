@@ -209,9 +209,7 @@ const Dashboard = () => {
           </CRow>
         </CCardFooter>
       </CCard>
-
       <WidgetsBrand withCharts />
-
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
