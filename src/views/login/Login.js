@@ -26,6 +26,7 @@ const Login = () => {
   const onPassChange = (event) => {
     setPassword(event.target.value.trim())
   }
+  console.log(localStorage.getItem('auth'))
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -37,7 +38,7 @@ const Login = () => {
                   <CForm>
                     <h1>Login</h1>
                     <p className="text-medium-emphasis">Sign In to your account</p>
-                    <p className="text-medium-emphasis">Hint: Demo Demo</p>
+                    <p className="text-medium-emphasis">Hint: demo demo</p>
 
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
@@ -67,10 +68,10 @@ const Login = () => {
                           component={NavLink}
                           activeClassName="active"
                           disabled={!(username === 'demo' && password === 'demo')}
-                          onClick={
+                          onClick={() =>
                             username === 'demo' && password === 'demo'
-                              ? localStorage.setItem('token', 1)
-                              : localStorage.setItem('token', 0)
+                              ? sessionStorage.setItem('auth', 1)
+                              : null
                           }
                         >
                           <CButton color="primary" className="px-4">

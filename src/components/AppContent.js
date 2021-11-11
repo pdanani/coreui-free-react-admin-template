@@ -11,23 +11,23 @@ const AppContent = () => {
       <Suspense fallback={<CSpinner color="primary" />}>
         <Switch>
           {routes.map((route, idx) => {
-            return (
-              route.component && (
-                <Route
-                  key={idx}
-                  path={route.path}
-                  exact={route.exact}
-                  name={route.name}
-                  render={(props) => (
-                    <>
-                      <route.component {...props} />
-                    </>
-                  )}
-                />
-              )
-            )
+            return route.component ? (
+              <Route
+                key={idx}
+                path={route.path}
+                exact={route.exact}
+                name={route.name}
+                render={(props) =>
+                  sessionStorage.getItem('auth') !== null ? (
+                    <route.component {...props} />
+                  ) : (
+                    <Redirect to={{ pathname: '/login' }} />
+                  )
+                }
+              />
+            ) : null
           })}
-          <Redirect from="/" to="/login" />
+          ] <Redirect from="/" to="/login" />
         </Switch>
       </Suspense>
     </CContainer>

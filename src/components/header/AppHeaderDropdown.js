@@ -32,7 +32,7 @@ const AppHeaderDropdown = () => {
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownHeader className="bg-light fw-semibold py-2">Settings</CDropdownHeader>
-        <CDropdownItem to="/login" href="/login">
+        <CDropdownItem to="/login" href="/login" onClick={() => sessionStorage.clear()}>
           <CIcon icon={cilSettings} className="me-2" />
           Log Out
         </CDropdownItem>
